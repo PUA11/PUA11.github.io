@@ -57,7 +57,8 @@
 <meta property="og:url" content="http:PUA11.github.io/2016/03/04/简单动画core-Animation/index.html">
 <meta property="og:site_name" content="乐乐的书桌台">
 <meta property="og:description" content="1.1CALayer是什么呢？CALayer是个与UIView很类似的概念，同样有layer,sublayer…，同样有backgroundColor、frame等相似的属性，我们可以将UIView看做一种特殊的CALayer，只不过UIView可以响应事件而已。一般来说，layer可以有两种用途，二者不互相冲突：一是对view相关属性的设置，包括圆角、阴影、边框等参数，更详细的参数请点击这里；二">
-<meta property="og:updated_time" content="2016-03-04T07:48:13.000Z">
+<meta property="og:image" content="http://images.cnitblog.com/blog/374539/201501/270936547379029.png">
+<meta property="og:updated_time" content="2016-03-04T07:51:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单动画core Animation">
 <meta name="twitter:description" content="1.1CALayer是什么呢？CALayer是个与UIView很类似的概念，同样有layer,sublayer…，同样有backgroundColor、frame等相似的属性，我们可以将UIView看做一种特殊的CALayer，只不过UIView可以响应事件而已。一般来说，layer可以有两种用途，二者不互相冲突：一是对view相关属性的设置，包括圆角、阴影、边框等参数，更详细的参数请点击这里；二">
@@ -232,7 +233,7 @@
 </ul>
 <p>CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@”transform.scale”];<br>scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];<br>scaleAnimation.toValue = [NSNumber numberWithFloat:1.5];<br>scaleAnimation.autoreverses = YES;<br>scaleAnimation.fillMode = kCAFillModeForwards;<br>scaleAnimation.repeatCount = MAXFLOAT;<br>scaleAnimation.duration = 0.8;</p>
 <p>[scaleLayer addAnimation:scaleAnimation forKey:@”scaleAnimation”];<br>}</p>
-<p>想要实现不同的效果，最关键的地方在于CABasicAnimation对象的初始化方式中keyPath的设定。在iOS中有以下几种不同的keyPath，代表着不同的效果：<br>-/Users/pua/Downloads/ca.png</p>
+<p>想要实现不同的效果，最关键的地方在于CABasicAnimation对象的初始化方式中keyPath的设定。在iOS中有以下几种不同的keyPath，代表着不同的效果：<br><img src="http://images.cnitblog.com/blog/374539/201501/270936547379029.png" alt=""></p>
 </span>
       
     </div>
