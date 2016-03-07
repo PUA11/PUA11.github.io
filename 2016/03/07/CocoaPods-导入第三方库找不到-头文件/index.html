@@ -51,16 +51,19 @@
 
 
 
-<meta name="description" content="/////////////////////////////初始化，self.view是父控件/////////////////////////////////_webView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 0)];_webView.delegate = self;_w">
+<meta name="description" content="最近一直在了解MVVM架构模式，也知道了ReactiveCocoa框架对MVVM实现的便利与优雅，但是CocoaPods导入ReactiveCocoa框架后，却出现一个问题，就是引入头文件的时候说找不到头文件解决方法如下：
+1，找到TARGETS -&amp;gt; Build Settings -&amp;gt; SearchPaths -&amp;gt; User Header Search Paths  在后面的空">
 <meta property="og:type" content="article">
-<meta property="og:title" content="完美方案——iOS的WebView自适应内容高度">
-<meta property="og:url" content="http:PUA11.github.io/2015/12/20/完美方案——iOS的WebView自适应内容高度/index.html">
+<meta property="og:title" content="CocoaPods 导入第三方库找不到 头文件">
+<meta property="og:url" content="http:PUA11.github.io/2016/03/07/CocoaPods-导入第三方库找不到-头文件/index.html">
 <meta property="og:site_name" content="乐乐的书桌台">
-<meta property="og:description" content="/////////////////////////////初始化，self.view是父控件/////////////////////////////////_webView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 0)];_webView.delegate = self;_w">
-<meta property="og:updated_time" content="2015-12-20T09:51:35.000Z">
+<meta property="og:description" content="最近一直在了解MVVM架构模式，也知道了ReactiveCocoa框架对MVVM实现的便利与优雅，但是CocoaPods导入ReactiveCocoa框架后，却出现一个问题，就是引入头文件的时候说找不到头文件解决方法如下：
+1，找到TARGETS -&amp;gt; Build Settings -&amp;gt; SearchPaths -&amp;gt; User Header Search Paths  在后面的空">
+<meta property="og:updated_time" content="2016-03-07T09:25:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="完美方案——iOS的WebView自适应内容高度">
-<meta name="twitter:description" content="/////////////////////////////初始化，self.view是父控件/////////////////////////////////_webView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 0)];_webView.delegate = self;_w">
+<meta name="twitter:title" content="CocoaPods 导入第三方库找不到 头文件">
+<meta name="twitter:description" content="最近一直在了解MVVM架构模式，也知道了ReactiveCocoa框架对MVVM实现的便利与优雅，但是CocoaPods导入ReactiveCocoa框架后，却出现一个问题，就是引入头文件的时候说找不到头文件解决方法如下：
+1，找到TARGETS -&amp;gt; Build Settings -&amp;gt; SearchPaths -&amp;gt; User Header Search Paths  在后面的空">
 
 
 
@@ -72,7 +75,7 @@
   };
 </script>
 
-  <title> 完美方案——iOS的WebView自适应内容高度 | 乐乐的书桌台 </title>
+  <title> CocoaPods 导入第三方库找不到 头文件 | 乐乐的书桌台 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -192,7 +195,7 @@
             
             
               
-                完美方案——iOS的WebView自适应内容高度
+                CocoaPods 导入第三方库找不到 头文件
               
             
           </h1>
@@ -201,8 +204,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-20T17:49:05+08:00" content="2015-12-20">
-              2015-12-20
+            <time itemprop="dateCreated" datetime="2016-03-07T17:23:57+08:00" content="2016-03-07">
+              2016-03-07
             </time>
           </span>
 
@@ -225,11 +228,8 @@
       
 
       
-        <span itemprop="articleBody"><p>/////////////////////////////初始化，self.view是父控件/////////////////////////////////<br>_webView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 0)];<br>_webView.delegate = self;<br>_webView.scrollView.bounces = NO;<br>_webView.scrollView.showsHorizontalScrollIndicator = NO;<br>_webView.scrollView.scrollEnabled = NO;<br>[_webView sizeToFit];<br><a id="more"></a><br>///////////////////////////////设置内容，这里包装一层div，用来获取内容实际高度（像素），htmlcontent是html格式的字符串//////////////<br>NSString * htmlcontent = [NSString stringWithFormat:@”<div id="\"webview_content_wrapper\"">%@</div>“, htmlcontent];<br>[_webView loadHTMLString:htmlcontent baseURL:nil];</p>
-<p>////////////////////////////////delegate的方法重载////////////////////////////////////////////</p>
-<ul>
-<li>(void)webViewDidFinishLoad:(UIWebView <em>)webView<br>{<br>//获取页面高度（像素）<br>NSString </em> clientheight_str = [webView stringByEvaluatingJavaScriptFromString: @”document.body.offsetHeight”];<br>float clientheight = [clientheight_str floatValue];<br>//设置到WebView上<br>webView.frame = CGRectMake(0, 0, self.view.frame.size.width, clientheight);<br>//获取WebView最佳尺寸（点）<br>CGSize frame = [webView sizeThatFits:webView.frame.size];<br>//获取内容实际高度（像素）<br>NSString <em> height_str= [webView stringByEvaluatingJavaScriptFromString: @”document.getElementById(‘webview_content_wrapper’).offsetHeight + parseInt(window.getComputedStyle(document.getElementsByTagName(‘body’)[0]).getPropertyValue(‘margin-top’))  + parseInt(window.getComputedStyle(document.getElementsByTagName(‘body’)[0]).getPropertyValue(‘margin-bottom’))”];<br>float height = [height_str floatValue];<br>//内容实际高度（像素）</em> 点和像素的比<br>height = height * frame.height / clientheight;<br>//再次设置WebView高度（点）<br>webView.frame = CGRectMake(0, 0, self.view.frame.size.width, height);<br>}</li>
-</ul>
+        <span itemprop="articleBody"><p>最近一直在了解MVVM架构模式，也知道了ReactiveCocoa框架对MVVM实现的便利与优雅，但是CocoaPods导入ReactiveCocoa框架后，却出现一个问题，就是引入头文件的时候说找不到头文件<br>解决方法如下：</p>
+<p>1，找到TARGETS -&gt; Build Settings -&gt; SearchPaths -&gt; User Header Search Paths  在后面的空白处双击<br>2， 点击 ‘+’号，添加一个新的键为${SRCROOT}，值设置为recursive<br>现在再来看一下导入的头文件,问题就解决了 so easy</p>
 </span>
       
     </div>
@@ -241,17 +241,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/16/iOS开发如何快速成长/" rel="next" title="iOS开发如何快速成长?">
-                <i class="fa fa-chevron-left"></i> iOS开发如何快速成长?
+              <a href="/2016/03/04/简单动画core-Animation/" rel="next" title="简单动画core Animation">
+                <i class="fa fa-chevron-left"></i> 简单动画core Animation
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/20/10个加速Table-Views开发的建议/" rel="prev" title="10个加速Table Views开发的建议">
-                10个加速Table Views开发的建议 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
