@@ -51,16 +51,25 @@
 
 
 
-<meta name="description" content="风雪夜，很冷；月亮被吃掉了大半；思念">
+<meta name="description" content="iOS中框架：播放音频需要用到AVFoundation.framework框架首先先导入依赖库 说明：AVFoundation.framework框架中的东西转换为CF需要使用桥接。
+1.获得音效文件的路径
+　　NSURL *url = [[NSBundle mainBundle] URLForResource:@”声音.wav”（写你文件名） withExtension:nil];
+2.加载音效">
 <meta property="og:type" content="article">
-<meta property="og:title" content="乐乐的书桌台">
-<meta property="og:url" content="http:PUA11.github.io/2015/12/15/aaa/index.html">
+<meta property="og:title" content="音频播放操作">
+<meta property="og:url" content="http:PUA11.github.io/2016/03/21/音频播放操作/index.html">
 <meta property="og:site_name" content="乐乐的书桌台">
-<meta property="og:description" content="风雪夜，很冷；月亮被吃掉了大半；思念">
-<meta property="og:updated_time" content="2015-12-15T12:29:47.000Z">
+<meta property="og:description" content="iOS中框架：播放音频需要用到AVFoundation.framework框架首先先导入依赖库 说明：AVFoundation.framework框架中的东西转换为CF需要使用桥接。
+1.获得音效文件的路径
+　　NSURL *url = [[NSBundle mainBundle] URLForResource:@”声音.wav”（写你文件名） withExtension:nil];
+2.加载音效">
+<meta property="og:updated_time" content="2016-03-21T11:29:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="乐乐的书桌台">
-<meta name="twitter:description" content="风雪夜，很冷；月亮被吃掉了大半；思念">
+<meta name="twitter:title" content="音频播放操作">
+<meta name="twitter:description" content="iOS中框架：播放音频需要用到AVFoundation.framework框架首先先导入依赖库 说明：AVFoundation.framework框架中的东西转换为CF需要使用桥接。
+1.获得音效文件的路径
+　　NSURL *url = [[NSBundle mainBundle] URLForResource:@”声音.wav”（写你文件名） withExtension:nil];
+2.加载音效">
 
 
 
@@ -72,7 +81,7 @@
   };
 </script>
 
-  <title>  | 乐乐的书桌台 </title>
+  <title> 音频播放操作 | 乐乐的书桌台 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -192,7 +201,7 @@
             
             
               
-                
+                音频播放操作
               
             
           </h1>
@@ -201,8 +210,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-15T20:29:47+08:00" content="2015-12-15">
-              2015-12-15
+            <time itemprop="dateCreated" datetime="2016-03-21T19:25:10+08:00" content="2016-03-21">
+              2016-03-21
             </time>
           </span>
 
@@ -225,7 +234,15 @@
       
 
       
-        <span itemprop="articleBody"><p>风雪夜，很冷；<br>月亮被吃掉了大半；<br>思念</p>
+        <span itemprop="articleBody"><p>iOS中<br>框架：播放音频需要用到AVFoundation.framework框架<br>首先先导入依赖库 说明：AVFoundation.framework框架中的东西转换为CF需要使用桥接。</p>
+<p>1.获得音效文件的路径</p>
+<p>　　NSURL *url = [[NSBundle mainBundle] URLForResource:@”声音.wav”（写你文件名） withExtension:nil];</p>
+<p>2.加载音效文件，得到对应的音效ID</p>
+<p>　　SystemSoundID soundID = 0;</p>
+<p>　　AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &amp;soundID);</p>
+<p>3.播放音效</p>
+<p>　　AudioServicesPlaySystemSound(soundID);</p>
+<p>就这么简单的三步走 音频加入小动画  效果更好</p>
 </span>
       
     </div>
@@ -237,13 +254,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/10/ReactiveCocoa的常用操作/" rel="next" title="ReactiveCocoa的常用操作(未完)">
+                <i class="fa fa-chevron-left"></i> ReactiveCocoa的常用操作(未完)
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/16/iOS开发如何快速成长/" rel="prev" title="iOS开发如何快速成长?">
-                iOS开发如何快速成长? <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

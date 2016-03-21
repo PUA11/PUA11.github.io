@@ -200,6 +200,95 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/21/音频播放操作/" itemprop="url">
+                  音频播放操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-21T19:25:10+08:00" content="2016-03-21">
+              2016-03-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>iOS中<br>框架：播放音频需要用到AVFoundation.framework框架<br>首先先导入依赖库 说明：AVFoundation.framework框架中的东西转换为CF需要使用桥接。</p>
+<p>1.获得音效文件的路径</p>
+<p>　　NSURL *url = [[NSBundle mainBundle] URLForResource:@”声音.wav”（写你文件名） withExtension:nil];</p>
+<p>2.加载音效文件，得到对应的音效ID</p>
+<p>　　SystemSoundID soundID = 0;</p>
+<p>　　AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &amp;soundID);</p>
+<p>3.播放音效</p>
+<p>　　AudioServicesPlaySystemSound(soundID);</p>
+<p>就这么简单的三步走 音频加入小动画  效果更好</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/10/ReactiveCocoa的常用操作/" itemprop="url">
                   ReactiveCocoa的常用操作(未完)
                 </a>
@@ -871,7 +960,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
